@@ -9,9 +9,9 @@ from langchain.chat_models import AzureChatOpenAI
 import streamlit as st
  
 print('Hello')
-endpoint = os.getenv("ENDPOINT_URL", "https://susmi-mfowdo1i-eastus2.openai.azure.com/")
+endpoint =  os.getenv("AZURE_OPENAI_ENDPOINT")
 deployment = os.getenv("DEPLOYMENT_NAME", "gpt-4.1-nano")
-subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "Ezgggca8H0eO8t3klmVgAYDcTRZrZ9nicVWjQaz0jEOuaJtvpoyIJQQJ99BIACHYHv6XJ3w3AAAAACOGYVHz")
+subscription_key = os.getenv("AZURE_OPENAI_API_KEY")
  
 # Initialize Azure OpenAI client with key-based authentication
 client = AzureOpenAI(
@@ -32,7 +32,7 @@ llm = AzureChatOpenAI(
 azure_embeddings = AzureOpenAIEmbeddings(
     azure_deployment="text-embedding-3-large",
     model="text-embedding-3-large",
-    api_key="Ezgggca8H0eO8t3klmVgAYDcTRZrZ9nicVWjQaz0jEOuaJtvpoyIJQQJ99BIACHYHv6XJ3w3AAAAACOGYVHz", # Replace with your actual API key or use environment variables/secrets
+    api_key=subscription_key, # Replace with your actual API key or use environment variables/secrets
     azure_endpoint=endpoint,
     api_version="2024-12-01-preview",
 )
